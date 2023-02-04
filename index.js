@@ -8,20 +8,26 @@ app.get("/",(req,res)=>{
     res.send("home")
 })
 
-app.get("/articles?page",(req,res)=>{
-    let {pag}=req.params
+
+app.get("/articles",(req,res)=>{
+    let page=Number(req.query.page)
+    let limit = Number(req.query.limit);
     let x=fs.readFileSync("task/data.json",{encoding:"utf-8"})
     let data=JSON.parse(x)
-    // res.send(page)
-    console.log(req.params)
+    var lim;
+    if(!limit){
+        lim=data.articles.length
+    }else{
+        lim=limit
+    }
+    //console.log(lim)
+     res.send(data.articles.slice(page , lim))
+    //res.json({'page':page , 'limit':limit})
 })
 
-app.listen(4000,async()=>{
-    // try{
-    //    await connection
-    //    console.log("connected")
-    // }catch(err){
-    //     console.log(err)
-    // }
+
+
+app.listen(4000,()=>{
+    
     console.log("connected with 4000")
 })
