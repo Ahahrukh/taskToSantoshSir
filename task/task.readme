@@ -1,0 +1,18 @@
+TODO:
+Create a route with /articles
+default data per page
+10 articles
+
+if i requests for /articles?page=2
+articles form 11-20 will be shown
+
+if i requests for /articles?page=3
+articles form 21-30 will be shown
+
+and So On
+
+
+Task 2 
+articles with dynamic counts
+/articles?page=2&count=5
+5 aticles will be given from 11-15
